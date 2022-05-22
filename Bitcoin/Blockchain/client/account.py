@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/USER/Documents/BCD/Bitcoin')
+sys.path.append('/Users/USER/Documents/Blockchain/BCD/Bitcoin')
 from Blockchain.Backend.core.EllepticCurve.EllepticCurve import Sha256Point
 import secrets
 from Blockchain.Backend.util.util import hash160, hash256

@@ -1,6 +1,6 @@
 import sys
 from tkinter import W
-sys.path.append('/Users/USER/Documents/BCD/Bitcoin')
+sys.path.append('/Users/USER/Documents/Blockchain/BCD/Bitcoin')
 
 import hashlib
 from Crypto.Hash import RIPEMD160

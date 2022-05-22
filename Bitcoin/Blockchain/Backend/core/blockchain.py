@@ -1,6 +1,6 @@
-from curses import ALL_MOUSE_EVENTS
+#from curses import ALL_MOUSE_EVENTS
 import sys
-sys.path.append('/Users/USER/Documents/BCD/Bitcoin')
+sys.path.append('/Users/USER/Documents/BCD/Blockchain/Bitcoin')
 
 from Blockchain.Backend.core.block import Block
 from Blockchain.Backend.core.blockheader import BlockHeader

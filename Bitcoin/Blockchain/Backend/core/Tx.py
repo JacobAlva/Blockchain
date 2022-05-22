@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/USER/Documents/BCD/Bitcoin')
+sys.path.append('/Users/USER/Documents/BCD/Blockchain/Bitcoin')
 from ctypes import LittleEndianStructure
 from Blockchain.Backend.core.Script import Script
 from Blockchain.Backend.util.util import int_to_little_endian, bytes_needed, decode_base58, little_endian_to_int, encode_variant, hash256
