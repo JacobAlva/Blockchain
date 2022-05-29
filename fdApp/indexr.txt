@@ -1,1 +1,7 @@
 this is a test file.
+
+M stands for Modified
+U stands for Untracked
+D stands for deleted
+
+Nothing to see here.
