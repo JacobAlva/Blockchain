@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 this is a test file.
 
 modified.
 changes made
+=======
+this is a test file.
+
+M stands for Modified
+U stands for Untracked
+D stands for deleted
+
+Nothing to see here.
+# Push test
+>>>>>>> 452f437c429058ba92dfeda8c0db504791d195fe
