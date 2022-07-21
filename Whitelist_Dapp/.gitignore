@@ -7,6 +7,8 @@ typechain-types
 Lock.sol
 deploy_sample.js
 test
+readme.md
+hardhat-tutorial
 
 #Hardhat files
 cache
