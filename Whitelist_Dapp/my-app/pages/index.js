@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css';
 import Web3Modal from "web3modal";
 import {Contract, providers} from "ethers";
 //import ConnectToCoinbaseWalletSdk from 'web3modal/dist/providers/connectors/coinbasewallet';
-import { WHITELIST_CONTRACT_ADDRESS } from "../constants";
+import { WHITELIST_CONTRACT_ADDRESS, abi } from "../constants";
 
 export default function Home() {
   const [walletConnected, setWalletConnected] = useState(false);
@@ -63,7 +63,7 @@ export default function Home() {
       const whitelistContract = new Contract (
         WHITELIST_CONTRACT_ADDRESS,
         abi,
-        sigher
+        signer
       );
       const address = await signer.getAddress();
       const _joinedWhitelist = await whitelistContract.whitelistedAddresses(

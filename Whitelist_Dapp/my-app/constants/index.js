@@ -1,4 +1,4 @@
-export const WHITELIST_CONTRACT_ADDRESS = "0x485AFdF2b1697aA73A869780D80B212B616B538E";
+export const WHITELIST_CONTRACT_ADDRESS = "0xd15bcCd7b233C66e9EAA2e3DA14AED422D2F16b0";
 
 export const abi = [
     {
@@ -42,7 +42,7 @@ export const abi = [
             type: "uint8"
             }
         ],
-        tateMutability: "view",
+        stateMutability: "view",
         type: "function"
     },
     {
@@ -53,7 +53,7 @@ export const abi = [
             type: "address"
             }
         ],
-        nam: "whitelistedAddresses",
+        name: "whitelistedAddresses",
         outputs: [
             {
             internalType: "bool",
