@@ -7,12 +7,15 @@ import "./IWhitelist.sol";
 
 contract LegacyDevs is ERC721Enumerable, Ownable {
     /**
-    * @dev_baseTokenURI for computing {tokenURI}. If set, the resulting URI for each token will be the concatenation of the 'baseURI' and the 'tokenID'
-     */
+    * @dev _baseTokenURI for computing {tokenURI}. If set, the resulting URI for each token will be the concatenation of the 'baseURI' and the 'tokenID'
+    */
      string _baseTokenURI;
 
-     //_price is the price of one Legacy Dev NFT
-     uint256 public _price = 0.01 ether;
+     //_presaleprice is the price for whitelisted members
+     uint256 public _presalePrice = 0.005 ether;
+
+     //_publicprice is the public price of one Legacy Dev NFT
+     uint256 public _publicPrice = 0.01 ether;
 
      //_paused is used to pause the contract in case of an emergency
      bool public _paused;
@@ -30,10 +33,13 @@ contract LegacyDevs is ERC721Enumerable, Ownable {
      bool public presaleStarted;
 
      //timestamp for when presale ends
-     uint256 public presealeEnded;
+     uint256 public presaleEnded;
 
+     //Ensures the mint functions can only be called when the contract isn't paused. This is helpful in case of an exploitation, adjustment, etc.
+     //Underscore is a special character only used inside a function modifier and it tells Solidity to execute the rest of the code.
      modifier onlyWhenNotPaused {
         require(!_paused, "Contract currenly paused");
+        _;
      }
 
     /**
@@ -53,7 +59,7 @@ contract LegacyDevs is ERC721Enumerable, Ownable {
         presaleStarted = true;
         //set presaleEnded time as current timestamp +5 ins
         //Solidity has cool syntax timestamps (seconds, minutes, hours, days, years)
-        presealeEnded = block.timestamp + 5 minutes;
+        presaleEnded = block.timestamp + 5 minutes;
      }
 
      // @dev presaleMint allows a user to mint one NFT per transaction during the presale.
@@ -61,8 +67,8 @@ contract LegacyDevs is ERC721Enumerable, Ownable {
         require(presaleStarted && block.timestamp < presaleEnded, "Presale is not running");
         require(whitelist.whitelistedAddresses(msg.sender), "You are not whitelisted");
         require(tokenIds < maxTokenIds, "Exceeded maximum Legacy Devs supply");
-        require(msg.value >= _price, "Ether sent is not sufficient");
-        tokendIds += 1;
+        require(msg.value >= _presalePrice, "Ether sent is not sufficient");
+        tokenIds += 1;
         
         // _safeMinst is a safer version of the _mint function as it ensures that if the address being minted to is a contract, then it knows how to deal with ERC721 tokens. Otherwise, works the same way as _mint
          _safeMint(msg.sender, tokenIds);
@@ -72,7 +78,7 @@ contract LegacyDevs is ERC721Enumerable, Ownable {
      function mint() public payable onlyWhenNotPaused {
         require(presaleStarted && block.timestamp >= presaleEnded, "Presale is yet to end");
         require(tokenIds < maxTokenIds, "Exceeded maximum Legacy Dev supply");
-        require(msg.value >= _price, "Ether sent is insufficient");
+        require(msg.value >= _publicPrice, "Ether sent is insufficient");
         tokenIds += 1;
         _safeMint(msg.sender, tokenIds);
      }
