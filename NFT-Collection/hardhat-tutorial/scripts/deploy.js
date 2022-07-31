@@ -1,12 +1,12 @@
 const {ethers} = require("hardhat");
 require("dotenv").config({path:".env"});
-const {WHITELIST_CONTRACT_ADDRESS, METADAT_URL} = require("../constants");
+const {WHITELIST_CONTRACT_ADDRESS, METADATA_URL} = require("../constants");
 
 async function main() {
   //Address of the whitelist constract deployed in the previous module (Whitelist_Dapp)
   const whitelistContract = WHITELIST_CONTRACT_ADDRESS;
   //URL from where we can extract the metadata for a Legacy Dev NFT
-  const metadataURL = METADAT_URL;
+  const metadataURL = METADATA_URL;
 
   /**A ContractFactory in ethers.js is an abstraction used to deploy new smarts contracts, 
    * so LegacyDevContracts here is a factory for instaces of our LegacyDevs contract */
